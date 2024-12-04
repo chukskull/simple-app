@@ -8,13 +8,18 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-   print('Request for index page received')
+   print('Administrator Loading...')
    return render_template('index.html')
 
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
+@app.route('/test', methods=['GET'])
+def test():
+    return render_template('trick.html')
+
 
 @app.route('/hello', methods=['POST'])
 def hello():
